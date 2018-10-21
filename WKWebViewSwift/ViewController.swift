@@ -2,10 +2,9 @@
 //  ViewController.swift
 //  WKWebViewSwift
 //
-//  Created by XiaoFeng on 2017/1/5.
-//  Copyright © 2017年 XiaoFeng. All rights reserved.
-//  QQ群:384089763 欢迎加入
-//  github链接:https://github.com/XFIOSXiaoFeng/SwiftWkWebView
+//  Created by Sean Patterson on 10/21/2018.
+//  Copyright © 2018 Bosson Design. All rights reserved.
+//
 
 import UIKit
 import WebKit
@@ -17,32 +16,33 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
    
-        self.automaticallyAdjustsScrollViewInsets = false
+        //self.automaticallyAdjustsScrollViewInsets = false
         
-        // 配置webView样式
+        // webView style
         var config = WkwebViewConfig()
         config.isShowScrollIndicator = false
         config.isProgressHidden = false
         
         webView.delegate = self
         
-        // 加载普通URL
+        // Load URL
         webView.webConfig = config
-        webView.webloadType(self, .URLString(url: "https://www.baidu.com"))
+        webView.webloadType(self, .URLString(url: "https://m.facebook.com"))
         
-        // 加载本地URL
+        // Load Local URL
 //        config.scriptMessageHandlerArray = ["valueName"]
 //        webView.webConfig = config
 //        webView.delegate = self
 //        webView.webloadType(self, .HTMLName(name: "test"))
 //
-        // POST加载
+        // POST Load
 //        let mobile = ""
 //        let pop = ""
 //        let auth = ""
 //        let param = ["mobile":"\(mobile)","pop":"\(pop)","auth":"\(auth)"];
 //        webView.webConfig = config
 //        webView.webloadType(self, .POST(url: "http://xxxxx", parameters: param))
+        
         
     }
     @IBAction func refreshClick(_ sender: UIBarButtonItem) {
@@ -58,6 +58,6 @@ extension ViewController:WKWebViewDelegate{
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("开始加载")
+        print("Loading")
     }
 }

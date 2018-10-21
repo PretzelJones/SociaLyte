@@ -2,8 +2,8 @@
 //  UIBarButtonItem.swift
 //  WKWebViewSwift
 //
-//  Created by XiaoFeng on 2017/10/20.
-//  Copyright © 2017年 XiaoFeng. All rights reserved.
+//  Created by Sean Patterson on 10/21/2018.
+//  Copyright © 2018 Bosson Design. All rights reserved.
 //
 
 import UIKit
@@ -34,8 +34,8 @@ extension UIBarButtonItem {
         backButton .setImage(backItemHlImage, for: .highlighted)
         
         if #available(iOS 11.0, *) {
-            backButton.contentEdgeInsets = UIEdgeInsetsMake(0, -15,0, 0);
-            backButton.imageEdgeInsets = UIEdgeInsetsMake(0, -15,0, 0);
+            backButton.contentEdgeInsets = UIEdgeInsets.init(top: 0, left: -15,bottom: 0, right: 0);
+            backButton.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -15,bottom: 0, right: 0);
         }
         backButton.sizeToFit()
         backButton.addTarget(target, action: action, for: .touchUpInside)

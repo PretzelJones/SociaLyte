@@ -2,12 +2,12 @@
 //  WKWebViewSwiftTests.swift
 //  WKWebViewSwiftTests
 //
-//  Created by XiaoFeng on 2017/1/5.
-//  Copyright © 2017年 XiaoFeng. All rights reserved.
+//  Created by Sean Patterson on 10/21/2018.
+//  Copyright © 2018 Bosson Design. All rights reserved.
 //
 
 import XCTest
-@testable import WKWebViewSwift
+//@testable import WKWebViewSwift
 
 class WKWebViewSwiftTests: XCTestCase {
     

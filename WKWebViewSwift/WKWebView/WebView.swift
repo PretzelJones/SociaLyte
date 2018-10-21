@@ -2,8 +2,8 @@
 //  wk.swift
 //  WKWebViewSwift
 //
-//  Created by XiaoFeng on 2017/10/20.
-//  Copyright © 2017年 XiaoFeng. All rights reserved.
+//  Created by Sean Patterson on 10/21/2018.
+//  Copyright © 2018 Bosson Design. All rights reserved.
 //
 
 import UIKit
@@ -12,31 +12,31 @@ import WebKit
 @IBDesignable
 class WebView: UIView {
     
-    /// 事件
+    // event
     fileprivate var target: AnyObject?
     
-    /// 创建webveiew
+    // create webveiew
     fileprivate var webView = WKWebView()
     
-    /// 进度条
+    /// progress bar
     fileprivate var progressView = UIProgressView()
     
-    /// 创建一个webiview的配置项
+    /// create webiview configuration item
     fileprivate let configuretion = WKWebViewConfiguration()
     
-    //执行JS 需要实现代理方法
+    // implementing JS requires implementing a proxy method
     fileprivate var POSTJavaScript = String()
     
-    //是否是第一次加载
+    // is it the first time loading?
     fileprivate var needLoadJSPOST:Bool?
     
-    /// WebView配置项
+    // WebView configuration item
     var webConfig : WkwebViewConfig?
     
-    //保存请求链接
+    // save request link
     fileprivate var snapShotsArray:Array<Any>?
     
-    //设置代理
+    // set proxy
     weak var delegate : WKWebViewDelegate?
     
     override public init(frame: CGRect) {
@@ -52,7 +52,7 @@ class WebView: UIView {
     }
     
     fileprivate func setupUI(webConfig:WkwebViewConfig)  {
-        // Webview的偏好设置
+        // Webview preferences
         configuretion.preferences = WKPreferences()
         configuretion.preferences.minimumFontSize = webConfig.minFontSize
         configuretion.preferences.javaScriptEnabled = webConfig.isjavaScriptEnabled
@@ -62,16 +62,16 @@ class WebView: UIView {
         
         webView = WKWebView(frame:frame,configuration: configuretion)
         
-        //开启手势交互
+        // turn on gesture interaction
         webView.allowsBackForwardNavigationGestures = webConfig.isAllowsBackForwardGestures
         
-        //滚动条
+        // scroll bar
         webView.scrollView.showsVerticalScrollIndicator = webConfig.isShowScrollIndicator
         webView.scrollView.showsHorizontalScrollIndicator = webConfig.isShowScrollIndicator
 
-        // 监听支持KVO的属性
+        // listen for KVO-enabled properties
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .new, context: nil)
-        //内容自适应
+        // content adaptation
         webView.sizeToFit()
         self.addSubview(webView)
         
@@ -86,7 +86,7 @@ class WebView: UIView {
         webView.uiDelegate = self
     }
     
-    /// 加载webView
+    /// load webView
     func webloadType(_ target:AnyObject,_ loadType:WkwebLoadType) {
         self.target = target
         setupUI(webConfig:webConfig ?? WkwebViewConfig())
@@ -120,10 +120,10 @@ class WebView: UIView {
         } catch { }
     }
     
-    /// 执行JavaScript代码
-    /// 例如 run_JavaScript(script:"document.getElementById('someElement').innerText")
+    /// Execute JavaScript code
+    /// e.g. run_JavaScript(script:"document.getElementById('someElement').innerText")
     ///
-    /// Parameter titleStr: title字符串
+    /// Parameter titleStr: title string
     public func run_JavaScript(javaScript:String?) {
         if let javaScript = javaScript {
             webView.evaluateJavaScript(javaScript) { result,error in
@@ -133,19 +133,19 @@ class WebView: UIView {
         }
     }
     
-    /// 刷新
+    /// refresh
     public func reload() {
         webView.reload()
     }
-    /// 后退
+    /// retreat
     public func goBack() {
         webView.goBack()
     }
-    /// 前进
+    /// go ahead
     public func goForward() {
         webView.goForward()
     }
-    /// 遗传webView
+    /// generic webView
     public func removeWebView(){
         webView.removeObserver(self, forKeyPath: "estimatedProgress")
         if let scriptMessage = webConfig?.scriptMessageHandlerArray {
@@ -155,7 +155,7 @@ class WebView: UIView {
         webView.uiDelegate = nil
         self.removeFromSuperview()
     }
-    //请求链接处理
+    // request link processing
     fileprivate func pushCurrentSnapshotView(_ request: NSURLRequest) -> Void {
         // 连接是否为空
         guard let urlStr = snapShotsArray?.last else { return }
@@ -215,7 +215,7 @@ extension WebView: WKNavigationDelegate{
                 decisionHandler(.cancel);
                 //用openURL 这个API打电话
                 if let mobileURL:URL = URL(string: requestURL) {
-                    UIApplication.shared.openURL(mobileURL)
+                    UIApplication.shared.open(mobileURL)
                 }
             }
             // 支付宝支付
@@ -230,7 +230,7 @@ extension WebView: WKNavigationDelegate{
                     
                     if let urlalipayURL:URL = URL(string: payString) {
                         if #available(iOS 10.0, *) {
-                            UIApplication.shared.open(urlalipayURL, options: [:], completionHandler: { result in
+                            UIApplication.shared.open(urlalipayURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: { result in
                                 self.webView.reload()
                             })
                         } else {
@@ -340,4 +340,9 @@ extension WebView: WKUIDelegate{
         }))
         target?.present(alert, animated: true, completion: nil)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

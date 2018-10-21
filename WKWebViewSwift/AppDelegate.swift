@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  WKWebViewSwift
 //
-//  Created by XiaoFeng on 2017/1/5.
-//  Copyright © 2017年 XiaoFeng. All rights reserved.
+//  Created by Sean Patterson on 10/21/2018.
+//  Copyright © 2018 Bosson Design. All rights reserved.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
