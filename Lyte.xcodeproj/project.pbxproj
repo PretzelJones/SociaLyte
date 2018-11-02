@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14124950218BBE9200CAF5D2 /* kReviewMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1412494F218BBE9200CAF5D2 /* kReviewMe.swift */; };
 		3AE0BCB01E1D57920013055C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0BCAF1E1D57920013055C /* AppDelegate.swift */; };
 		3AE0BCB21E1D57920013055C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE0BCB11E1D57920013055C /* ViewController.swift */; };
 		3AE0BCB51E1D57920013055C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE0BCB31E1D57920013055C /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1412494F218BBE9200CAF5D2 /* kReviewMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kReviewMe.swift; sourceTree = "<group>"; };
 		3AE0BCAC1E1D57920013055C /* Lyte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lyte.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE0BCAF1E1D57920013055C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AE0BCB11E1D57920013055C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		3AE0BCAE1E1D57920013055C /* WKWebViewSwift */ = {
 			isa = PBXGroup;
 			children = (
+				1412494F218BBE9200CAF5D2 /* kReviewMe.swift */,
 				3AE0BCF01E1D5C3B0013055C /* WKWebView */,
 				3AE0BCAF1E1D57920013055C /* AppDelegate.swift */,
 				CEF9533A1F998E5B005B00D1 /* Extension+UIBarButtonItem.swift */,
@@ -225,6 +228,11 @@
 						DevelopmentTeam = Z4JJZ2GKLM;
 						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					3AE0BCBF1E1D57920013055C = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -297,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AE0BCB21E1D57920013055C /* ViewController.swift in Sources */,
+				14124950218BBE9200CAF5D2 /* kReviewMe.swift in Sources */,
 				CEF9533B1F998E5B005B00D1 /* Extension+UIBarButtonItem.swift in Sources */,
 				CECCB01D1F9A411500A4DA82 /* Extension+UIView.swift in Sources */,
 				CEF9533F1F99B9F9005B00D1 /* Extension+String.swift in Sources */,

@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import StoreKit
 
 class ViewController: UIViewController {
 
@@ -15,6 +16,13 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //code for review popup
+        if #available(iOS 10.3, *) {
+            kReviewMe().showReviewView(afterMinimumLaunchCount: 4)
+        }else{
+            // Review View is unvailable for lower versions. Please use your custom view.
+        }
    
         //self.automaticallyAdjustsScrollViewInsets = false
         
@@ -23,7 +31,7 @@ class ViewController: UIViewController {
         config.isShowScrollIndicator = false
         config.isProgressHidden = false
         
-        webView.delegate = self
+        webView.delegate = self as? WKWebViewDelegate
         
         // Load URL
         webView.webConfig = config
@@ -51,8 +59,6 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController:WKWebViewDelegate{
-
     func webViewUserContentController(_ scriptMessageHandlerArray: [String], didReceive message: WKScriptMessage) {
         print(message.body)
     }
@@ -60,4 +66,3 @@ extension ViewController:WKWebViewDelegate{
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("Loading")
     }
-}
