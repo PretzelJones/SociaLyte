@@ -112,10 +112,10 @@ class WebView: UIView {
     
     fileprivate func loadHost(string:String) {
         let path = Bundle.main.path(forResource: string, ofType: "html")
-        // 获得html内容
+        // Get html content
         do {
             let html = try String(contentsOfFile: path!, encoding: String.Encoding.utf8)
-            // 加载js
+            // Load js
             webView.loadHTMLString(html, baseURL: Bundle.main.bundleURL)
         } catch { }
     }
@@ -157,29 +157,29 @@ class WebView: UIView {
     }
     // request link processing
     fileprivate func pushCurrentSnapshotView(_ request: NSURLRequest) -> Void {
-        // 连接是否为空
+        // Is the connection empty?
         guard let urlStr = snapShotsArray?.last else { return }
-        // 转换成URL
+        // Convert to URL
         let url = URL(string: urlStr as! String)
-        // 转换成NSURLRequest
+        // Convert to NSURLRequest
         let lastRequest = NSURLRequest(url: url!)
-        // 如果url是很奇怪的就不push
+        // If the url is very strange, it will not be pushed.
         if request.url?.absoluteString == "about:blank"{ return }
-        // 如果url一样就不进行push
+        // If the url is the same, it will not be pushed
         if (lastRequest.url?.absoluteString == request.url?.absoluteString) {return}
         // snapshotView
         let currentSnapShotView = webView.snapshotView(afterScreenUpdates: true);
-        //向数组添加字典
+        //Add a dictionary to the array
         snapShotsArray = [["request":request,"snapShotView":currentSnapShotView]]
     }
     
     open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "estimatedProgress"{
-            // 设置进度条透明度
+            // Set progress bar transparency
             progressView.alpha = CGFloat(1.0 - webView.estimatedProgress)
-            // 给进度条添加进度和动画
+            // Add progress and animation to the progress bar
             progressView.setProgress(Float(webView.estimatedProgress), animated: true)
-            // 结束进度
+            // End progress
             if Float(webView.estimatedProgress) >= 1.0{
                 progressView.alpha = 0.0
                 progressView .setProgress(0.0, animated: false)
@@ -201,24 +201,24 @@ extension WebView: WKScriptMessageHandler{
 // MARK: - WKNavigationDelegate
 extension WebView: WKNavigationDelegate{
     
-    //服务器开始请求的时候调用
+    // Called when the server starts the request
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         self.delegate?.webView(webView, decidePolicyFor: navigationAction, decisionHandler: decisionHandler)
         
         let navigationURL = navigationAction.request.url?.absoluteString
         if let requestURL = navigationURL?.removingPercentEncoding {
-            //拨打电话
-            //兼容安卓的服务器写法:<a class = "mobile" href = "tel://电话号码"></a>
-            //或者:<a class = "mobile" href = "tel:电话号码"></a>
+            //dial number
+            //Android-compatible server writing: <a class = "mobile" href = "tel://phone number"></a>
+            //Or: <a class = "mobile" href = "tel:phone number"></a>
             if requestURL.hasPrefix("tel://") {
-                //取消WKWebView 打电话请求
+                //Cancel WKWebView call request
                 decisionHandler(.cancel);
-                //用openURL 这个API打电话
+                //Call with openURL this API
                 if let mobileURL:URL = URL(string: requestURL) {
                     UIApplication.shared.open(mobileURL)
                 }
             }
-            // 支付宝支付
+            /* This is for Alipay, a chinese payment system
             if requestURL.hasPrefix("alipay://") {
                 
                 var urlString = requestURL.mySubString(from: 23)
@@ -238,7 +238,7 @@ extension WebView: WKNavigationDelegate{
                         }
                     }
                 }
-            }
+            }*/
         }
         switch navigationAction.navigationType {
         case WKNavigationType.linkActivated:
@@ -260,36 +260,36 @@ extension WebView: WKNavigationDelegate{
         decisionHandler(.allow)
     }
     
-    //开始加载
+    //Start loading
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         self.delegate?.webView(webView, didStartProvisionalNavigation: navigation)
     }
     
-    //这个是网页加载完成，导航的变化
+    //This is the page loading is complete, the navigation changes
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.delegate?.webView(webView, didFinish: navigation)
-        // 判断是否需要加载（仅在第一次加载）
+        // Determine if you need to load (only on the first load)
         if needLoadJSPOST == true {
-            // 调用使用JS发送POST请求的方法
+            // Calling a method to send a POST request using JS
             run_JavaScript(javaScript: POSTJavaScript)
-            // 将Flag置为NO（后面就不需要加载了）
+            // Set Flag to NO (you don't need to load it later)
             needLoadJSPOST = false
         }
     }
     
-    //跳转失败的时候调用
+    //Called when the jump fails
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         self.delegate?.webView(webView, didFail: navigation, withError: error)
         print(error)
     }
-    // 内容加载失败时候调用
+    // Called when content fails to load
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         self.delegate?.webView(webView, didFailProvisionalNavigation: navigation, withError: error)
         progressView.isHidden = true
         print(error)
     }
     
-    // 打开新窗口委托
+    // Open a new window delegate
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame?.isMainFrame == nil {
             webView.load(navigationAction.request)
@@ -298,36 +298,36 @@ extension WebView: WKNavigationDelegate{
     }
 }
 
-// MARK: - WKUIDelegate 不实现该代理方法 网页内调用弹窗时会抛出异常,导致程序崩溃
+// MARK: - WKUIDelegate Do not implement the proxy method. An exception is thrown when a popup is called within a web page, causing the program to crash.
 extension WebView: WKUIDelegate{
     
-    // 获取js 里面的提示
+    // Get tips in js
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         
-        let alert = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: { (_) -> Void in
+        let alert = UIAlertController(title: "prompt", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "determine", style: .default, handler: { (_) -> Void in
             completionHandler()
         }))
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (_) -> Void in
+        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: { (_) -> Void in
             completionHandler()
         }))
         target?.present(alert, animated: true, completion: nil)
     }
     
-    // js 信息的交流
+    // js Information exchange
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         
-        let alert = UIAlertController(title: "提示", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: { (_) -> Void in
+        let alert = UIAlertController(title: "prompt", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "determine", style: .default, handler: { (_) -> Void in
             completionHandler(true)
         }))
-        alert.addAction(UIAlertAction(title: "取消", style: .cancel, handler: { (_) -> Void in
+        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: { (_) -> Void in
             completionHandler(false)
         }))
         target?.present(alert, animated: true, completion: nil)
     }
     
-    // 交互。可输入的文本。
+    // Interaction. The text that can be entered.
     func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
         
         let alert = UIAlertController(title: prompt, message: defaultText, preferredStyle: .alert)
@@ -335,7 +335,7 @@ extension WebView: WKUIDelegate{
         alert.addTextField { (textField: UITextField) -> Void in
             textField.textColor = UIColor.red
         }
-        alert.addAction(UIAlertAction(title: "确定", style: .default, handler: { (_) -> Void in
+        alert.addAction(UIAlertAction(title: "determine", style: .default, handler: { (_) -> Void in
             completionHandler(alert.textFields![0].text!)
         }))
         target?.present(alert, animated: true, completion: nil)

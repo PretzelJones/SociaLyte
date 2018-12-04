@@ -9,10 +9,13 @@
 import UIKit
 import WebKit
 import StoreKit
+import SafariServices
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var webView: WebView!
+    //@IBOutlet weak var goBackButton: UIBarButtonItem!
+    //@IBOutlet weak var goForwardButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +26,6 @@ class ViewController: UIViewController {
         }else{
             // Review View is unvailable for lower versions. Please use your custom view.
         }
-   
-        //self.automaticallyAdjustsScrollViewInsets = false
         
         // webView style
         var config = WkwebViewConfig()
@@ -50,19 +51,53 @@ class ViewController: UIViewController {
 //        let param = ["mobile":"\(mobile)","pop":"\(pop)","auth":"\(auth)"];
 //        webView.webConfig = config
 //        webView.webloadType(self, .POST(url: "http://xxxxx", parameters: param))
-        
-        
+
     }
+
     @IBAction func refreshClick(_ sender: UIBarButtonItem) {
         webView.reload()
     }
     
 }
 
+extension ViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        // show indicator
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        // dismiss indicator
+        
+        // if url is not valid {
+        //    decisionHandler(.cancel)
+        // }
+        decisionHandler(.allow)
+    }
+
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        // show error dialog
+    }
+}
+
+extension ViewController: WKUIDelegate {
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if navigationAction.targetFrame == nil {
+            webView.load(navigationAction.request)
+        }
+        return nil
+    }
+}
     func webViewUserContentController(_ scriptMessageHandlerArray: [String], didReceive message: WKScriptMessage) {
         print(message.body)
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("Loading")
+        print("Loading");
     }
+    //handles opening of external links
+    func webView(webView: WKWebView!, createWebViewWithConfiguration configuration: WKWebViewConfiguration!, forNavigationAction navigationAction: WKNavigationAction!, windowFeatures: WKWindowFeatures!) -> WKWebView! {
+        if navigationAction.targetFrame == nil {
+            webView.load(navigationAction.request)
+    }
+    return nil
+}

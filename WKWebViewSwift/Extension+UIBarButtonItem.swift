@@ -8,13 +8,13 @@
 
 import UIKit
 
-///MARK: 分类方法 可以提取到别处使用
+///MARK: Classification method can be extracted to use elsewhere
 extension UIBarButtonItem {
-    /// 创建 UIBarButtonItem
+    /// create UIBarButtonItem
     ///
     /// - parameter title:    title
-    /// - parameter image:     图片
-    /// - parameter imageH:   高亮图
+    /// - parameter image:    image
+    /// - parameter imageH:   highlight
     /// - parameter target:   target
     /// - parameter action:   action
     ///

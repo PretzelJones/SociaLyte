@@ -73,8 +73,8 @@ extension UIView {
         }
     }
     
-    // 关联 SB 和 XIB
-    // 设置圆角
+    // Associate SB and XIB
+    // Set rounded corners
     @IBInspectable public var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
@@ -85,7 +85,7 @@ extension UIView {
         }
     }
     
-    // 阴影半径，默认3
+    // Shadow radius, default 3
     @IBInspectable public var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
@@ -95,7 +95,7 @@ extension UIView {
             layer.shadowRadius = newValue
         }
     }
-    // 阴影透明度，默认0
+    // Shadow transparency, default 0
     @IBInspectable public var shadowOpacity: Float {
         get {
             return layer.shadowOpacity
@@ -105,7 +105,7 @@ extension UIView {
             layer.shadowOpacity = newValue
         }
     }
-    // 阴影颜色
+    // Shadow color
     @IBInspectable public var shadowColor: UIColor? {
         get {
             return layer.shadowColor != nil ? UIColor(cgColor: layer.shadowColor!) : nil
@@ -115,7 +115,7 @@ extension UIView {
             layer.shadowColor = newValue?.cgColor
         }
     }
-    // 阴影偏移量，和shadowRadius配合使用
+    // Shadow offset, used with shadowRadius
     @IBInspectable public var shadowOffset: CGSize {
         get {
             return layer.shadowOffset
@@ -126,7 +126,7 @@ extension UIView {
         }
     }
     
-    // 图层的显示顺序(层级关系)
+    // The order in which the layers are displayed (hierarchical relationship)
     @IBInspectable public var zPosition: CGFloat {
         get {
             return layer.zPosition
