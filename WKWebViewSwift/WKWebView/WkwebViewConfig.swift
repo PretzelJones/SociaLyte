@@ -43,9 +43,6 @@ struct WkwebViewConfig {
     /// Loading color
     public var progressTintColor:UIColor = UIColor.green
     
-    /// Configure Alipay payment to return successfully APPScheme (not sure what this is)
-    //public var aliPayScheme:String = "zhianjia"
-    
 }
 //Page load type
 enum WkwebLoadType{

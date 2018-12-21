@@ -12,20 +12,22 @@ import StoreKit
 import SafariServices
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var webView: WebView!
     //@IBOutlet weak var goBackButton: UIBarButtonItem!
     //@IBOutlet weak var goForwardButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
+        //KReviewMe Code
+        //kReviewMe().showReviewView(afterMinimumLaunchCount: 5)
         //code for review popup
-        if #available(iOS 10.3, *) {
-            kReviewMe().showReviewView(afterMinimumLaunchCount: 4)
+        /*if #available(iOS 10.3, *) {
+            kReviewMe().showReviewView(afterMinimumLaunchCount: 5)
         }else{
             // Review View is unvailable for lower versions. Please use your custom view.
-        }
+        }*/
         
         // webView style
         var config = WkwebViewConfig()

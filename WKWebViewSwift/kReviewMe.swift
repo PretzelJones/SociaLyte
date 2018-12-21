@@ -17,7 +17,7 @@ class kReviewMe {
     
     /** Minimum number of launches that we need to have until we ask for review **/
     
-    //let minimumLaunchCount = 2
+    let minimumLaunchCount = 2
     
     /** Get UserDefaults value if its nil or no value found, set the value and there on increament 'launchCount' on every launch. **/
     

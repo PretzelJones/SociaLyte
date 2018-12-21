@@ -103,7 +103,7 @@ class WebView: UIView {
             
         case .POST(let string, parameters: let postString):
             needLoadJSPOST = true
-            // 给每一个key，value前后加上一个“
+            // Add one to each key, value before and after“
             let dictMap = postString.map({"\"\($0.key)\":\"\($0.value)\""})
             POSTJavaScript = "post('\(string)\',{\(dictMap.joined(separator: ","))})"
             loadHost(string: "WKJSPOST")
@@ -218,27 +218,6 @@ extension WebView: WKNavigationDelegate{
                     UIApplication.shared.open(mobileURL)
                 }
             }
-            /* This is for Alipay, a chinese payment system
-            if requestURL.hasPrefix("alipay://") {
-                
-                var urlString = requestURL.mySubString(from: 23)
-                urlString = urlString.replacingOccurrences(of: "alipays", with: webConfig!.aliPayScheme)
-                
-                if let strEncoding = urlString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-                    
-                    let payString = "alipay://alipayclient/?\(strEncoding)"
-                    
-                    if let urlalipayURL:URL = URL(string: payString) {
-                        if #available(iOS 10.0, *) {
-                            UIApplication.shared.open(urlalipayURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: { result in
-                                self.webView.reload()
-                            })
-                        } else {
-                            UIApplication.shared.openURL(urlalipayURL)
-                        }
-                    }
-                }
-            }*/
         }
         switch navigationAction.navigationType {
         case WKNavigationType.linkActivated:
