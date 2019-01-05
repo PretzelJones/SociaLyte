@@ -45,17 +45,17 @@
 /* Begin PBXFileReference section */
 		140B374F21CC672E00E192AC /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		1412494F218BBE9200CAF5D2 /* kReviewMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kReviewMe.swift; sourceTree = "<group>"; };
-		3AE0BCAC1E1D57920013055C /* Lyte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lyte.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE0BCAC1E1D57920013055C /* SocialLyte.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialLyte.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE0BCAF1E1D57920013055C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AE0BCB11E1D57920013055C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3AE0BCB41E1D57920013055C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3AE0BCB61E1D57920013055C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AE0BCB91E1D57920013055C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AE0BCBB1E1D57920013055C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3AE0BCC01E1D57920013055C /* LyteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LyteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE0BCC01E1D57920013055C /* SocialLyteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialLyteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE0BCC41E1D57920013055C /* WKWebViewSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewSwiftTests.swift; sourceTree = "<group>"; };
 		3AE0BCC61E1D57920013055C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3AE0BCCB1E1D57920013055C /* LyteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LyteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE0BCCB1E1D57920013055C /* SocialLyteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialLyteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE0BCCF1E1D57920013055C /* WKWebViewSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebViewSwiftUITests.swift; sourceTree = "<group>"; };
 		3AE0BCD11E1D57920013055C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AE0BCF31E1D5C3B0013055C /* WKJSPOST.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WKJSPOST.html; sourceTree = "<group>"; };
@@ -105,9 +105,9 @@
 		3AE0BCAD1E1D57920013055C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3AE0BCAC1E1D57920013055C /* Lyte.app */,
-				3AE0BCC01E1D57920013055C /* LyteTests.xctest */,
-				3AE0BCCB1E1D57920013055C /* LyteUITests.xctest */,
+				3AE0BCAC1E1D57920013055C /* SocialLyte.app */,
+				3AE0BCC01E1D57920013055C /* SocialLyteTests.xctest */,
+				3AE0BCCB1E1D57920013055C /* SocialLyteUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -163,9 +163,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3AE0BCAB1E1D57920013055C /* Lyte */ = {
+		3AE0BCAB1E1D57920013055C /* SocialLyte */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3AE0BCD41E1D57920013055C /* Build configuration list for PBXNativeTarget "Lyte" */;
+			buildConfigurationList = 3AE0BCD41E1D57920013055C /* Build configuration list for PBXNativeTarget "SocialLyte" */;
 			buildPhases = (
 				3AE0BCA81E1D57920013055C /* Sources */,
 				3AE0BCA91E1D57920013055C /* Frameworks */,
@@ -175,14 +175,14 @@
 			);
 			dependencies = (
 			);
-			name = Lyte;
+			name = SocialLyte;
 			productName = WKWebViewSwift;
-			productReference = 3AE0BCAC1E1D57920013055C /* Lyte.app */;
+			productReference = 3AE0BCAC1E1D57920013055C /* SocialLyte.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3AE0BCBF1E1D57920013055C /* LyteTests */ = {
+		3AE0BCBF1E1D57920013055C /* SocialLyteTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3AE0BCD71E1D57920013055C /* Build configuration list for PBXNativeTarget "LyteTests" */;
+			buildConfigurationList = 3AE0BCD71E1D57920013055C /* Build configuration list for PBXNativeTarget "SocialLyteTests" */;
 			buildPhases = (
 				3AE0BCBC1E1D57920013055C /* Sources */,
 				3AE0BCBD1E1D57920013055C /* Frameworks */,
@@ -193,14 +193,14 @@
 			dependencies = (
 				3AE0BCC21E1D57920013055C /* PBXTargetDependency */,
 			);
-			name = LyteTests;
+			name = SocialLyteTests;
 			productName = WKWebViewSwiftTests;
-			productReference = 3AE0BCC01E1D57920013055C /* LyteTests.xctest */;
+			productReference = 3AE0BCC01E1D57920013055C /* SocialLyteTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3AE0BCCA1E1D57920013055C /* LyteUITests */ = {
+		3AE0BCCA1E1D57920013055C /* SocialLyteUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3AE0BCDA1E1D57920013055C /* Build configuration list for PBXNativeTarget "LyteUITests" */;
+			buildConfigurationList = 3AE0BCDA1E1D57920013055C /* Build configuration list for PBXNativeTarget "SocialLyteUITests" */;
 			buildPhases = (
 				3AE0BCC71E1D57920013055C /* Sources */,
 				3AE0BCC81E1D57920013055C /* Frameworks */,
@@ -211,9 +211,9 @@
 			dependencies = (
 				3AE0BCCD1E1D57920013055C /* PBXTargetDependency */,
 			);
-			name = LyteUITests;
+			name = SocialLyteUITests;
 			productName = WKWebViewSwiftUITests;
-			productReference = 3AE0BCCB1E1D57920013055C /* LyteUITests.xctest */;
+			productReference = 3AE0BCCB1E1D57920013055C /* SocialLyteUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -266,9 +266,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3AE0BCAB1E1D57920013055C /* Lyte */,
-				3AE0BCBF1E1D57920013055C /* LyteTests */,
-				3AE0BCCA1E1D57920013055C /* LyteUITests */,
+				3AE0BCAB1E1D57920013055C /* SocialLyte */,
+				3AE0BCBF1E1D57920013055C /* SocialLyteTests */,
+				3AE0BCCA1E1D57920013055C /* SocialLyteUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -340,12 +340,12 @@
 /* Begin PBXTargetDependency section */
 		3AE0BCC21E1D57920013055C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3AE0BCAB1E1D57920013055C /* Lyte */;
+			target = 3AE0BCAB1E1D57920013055C /* SocialLyte */;
 			targetProxy = 3AE0BCC11E1D57920013055C /* PBXContainerItemProxy */;
 		};
 		3AE0BCCD1E1D57920013055C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 3AE0BCAB1E1D57920013055C /* Lyte */;
+			target = 3AE0BCAB1E1D57920013055C /* SocialLyte */;
 			targetProxy = 3AE0BCCC1E1D57920013055C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -488,7 +488,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WKWebViewSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bossondesign.Lyte;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bossondesign.SocialLyte;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -505,7 +505,7 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WKWebViewSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bossondesign.Lyte;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bossondesign.SocialLyte;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -587,7 +587,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3AE0BCD41E1D57920013055C /* Build configuration list for PBXNativeTarget "Lyte" */ = {
+		3AE0BCD41E1D57920013055C /* Build configuration list for PBXNativeTarget "SocialLyte" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3AE0BCD51E1D57920013055C /* Debug */,
@@ -596,7 +596,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3AE0BCD71E1D57920013055C /* Build configuration list for PBXNativeTarget "LyteTests" */ = {
+		3AE0BCD71E1D57920013055C /* Build configuration list for PBXNativeTarget "SocialLyteTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3AE0BCD81E1D57920013055C /* Debug */,
@@ -605,7 +605,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3AE0BCDA1E1D57920013055C /* Build configuration list for PBXNativeTarget "LyteUITests" */ = {
+		3AE0BCDA1E1D57920013055C /* Build configuration list for PBXNativeTarget "SocialLyteUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3AE0BCDB1E1D57920013055C /* Debug */,

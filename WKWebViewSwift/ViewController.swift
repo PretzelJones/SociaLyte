@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 import StoreKit
-import SafariServices
+//import SafariServices
 
 class ViewController: UIViewController {
     

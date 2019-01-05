@@ -283,11 +283,11 @@ extension WebView: WKUIDelegate{
     // Get tips in js
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         
-        let alert = UIAlertController(title: "prompt", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "determine", style: .default, handler: { (_) -> Void in
+        let alert = UIAlertController(title: "Heads Up", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (_) -> Void in
             completionHandler()
         }))
-        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: { (_) -> Void in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) -> Void in
             completionHandler()
         }))
         target?.present(alert, animated: true, completion: nil)
@@ -296,11 +296,11 @@ extension WebView: WKUIDelegate{
     // js Information exchange
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
         
-        let alert = UIAlertController(title: "prompt", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "determine", style: .default, handler: { (_) -> Void in
+        let alert = UIAlertController(title: "Heads Up", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (_) -> Void in
             completionHandler(true)
         }))
-        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: { (_) -> Void in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) -> Void in
             completionHandler(false)
         }))
         target?.present(alert, animated: true, completion: nil)
@@ -314,7 +314,7 @@ extension WebView: WKUIDelegate{
         alert.addTextField { (textField: UITextField) -> Void in
             textField.textColor = UIColor.red
         }
-        alert.addAction(UIAlertAction(title: "determine", style: .default, handler: { (_) -> Void in
+        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { (_) -> Void in
             completionHandler(alert.textFields![0].text!)
         }))
         target?.present(alert, animated: true, completion: nil)
