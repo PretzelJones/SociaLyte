@@ -8,18 +8,26 @@
 
 import UIKit
 import WebKit
-import StoreKit
-//import SafariServices
+//import StoreKit
+//import CoreLocation
 
 class ViewController: UIViewController {
+    //class ViewController: UIViewController, CLLocationManagerDelegate {
+    
+    //var locationManager: CLLocationManager!
     
     @IBOutlet weak var webView: WebView!
-    //@IBOutlet weak var goBackButton: UIBarButtonItem!
-    //@IBOutlet weak var goForwardButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+      /*
+        //required for loaction functionality
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        locationManager.stopUpdatingLocation()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        */
         //KReviewMe Code
         //kReviewMe().showReviewView(afterMinimumLaunchCount: 5)
         //code for review popup
@@ -56,9 +64,9 @@ class ViewController: UIViewController {
 
     }
 
-    @IBAction func refreshClick(_ sender: UIBarButtonItem) {
-        webView.reload()
-    }
+    //@IBAction func refreshClick(_ sender: UIBarButtonItem) {
+      //  webView.reload()
+    //}
     
 }
 

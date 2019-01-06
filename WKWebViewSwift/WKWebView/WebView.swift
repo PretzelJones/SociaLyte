@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import AVFoundation
 
 @IBDesignable
 class WebView: UIView {
@@ -18,10 +19,10 @@ class WebView: UIView {
     // create webveiew
     fileprivate var webView = WKWebView()
     
-    /// progress bar
+    // progress bar
     fileprivate var progressView = UIProgressView()
     
-    /// create webiview configuration item
+    // create webiview configuration item
     fileprivate let configuretion = WKWebViewConfiguration()
     
     // implementing JS requires implementing a proxy method
@@ -86,7 +87,7 @@ class WebView: UIView {
         webView.uiDelegate = self
     }
     
-    /// load webView
+    // load webView
     func webloadType(_ target:AnyObject,_ loadType:WkwebLoadType) {
         self.target = target
         setupUI(webConfig:webConfig ?? WkwebViewConfig())
@@ -133,19 +134,19 @@ class WebView: UIView {
         }
     }
     
-    /// refresh
+    // refresh
     public func reload() {
         webView.reload()
     }
-    /// retreat
+    // go back
     public func goBack() {
         webView.goBack()
     }
-    /// go ahead
+    // go forward
     public func goForward() {
         webView.goForward()
     }
-    /// generic webView
+    // generic webView
     public func removeWebView(){
         webView.removeObserver(self, forKeyPath: "estimatedProgress")
         if let scriptMessage = webConfig?.scriptMessageHandlerArray {
@@ -256,7 +257,7 @@ extension WebView: WKNavigationDelegate{
         }
     }
     
-    //Called when the jump fails
+    // Called when the jump fails
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         self.delegate?.webView(webView, didFail: navigation, withError: error)
         print(error)
